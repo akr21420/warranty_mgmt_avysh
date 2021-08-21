@@ -1,0 +1,48 @@
+<section id="displaywarr">
+    <table class="table table-striped mt-5">
+        <thead class="thead-dark">
+            <tr>
+                <th>Warranty Id</th>
+                <th>Warranty Name</th>
+                <th>Products</th>
+                <th>Duration</th>
+                <th>Resolution</th>
+                <th>Type</th>
+                <th>Extendable Duration</th>
+                <th>Extension Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each warr}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{name}}</td>
+                <td>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="productsDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Products
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="productsDropdown">
+                            {{#each productIds}}
+                            <a class="dropdown-item" href="/product/display">{{name}}</a>
+                            {{else}}
+                            <h6>No products</h6>
+                            {{/each}}
+                        </div>
+                    </div>
+                </td>
+                <td>{{duration.year}} years, {{duration.month}} months</td>
+                <td>{{resolution}}</td>
+                <td>{{type}}</td>
+                <td>{{extendDur.year}} years, {{extendDur.month}} months</td>
+                <td>{{extendPrice}}</td>
+                <td><a href="/{{_id}}/edit" class="btn btn-primary angled-gradient-button mr-1">Edit</a></td>
+            </tr>
+            {{else}}
+            <h1 style="text-align: center; color: black">No Warranties registered</h1>
+            {{/each}}
+        </tbody>
+    </table>
+</section>

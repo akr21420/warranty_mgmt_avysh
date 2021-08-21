@@ -1,0 +1,50 @@
+<br>
+<section id="display-cart">
+  {{#if item.length}}
+  <table class="table table-striped mt-5">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center">Image</th>
+        <th class="text-center">Product Name</th>
+        <th class="text-center">Quantity</th>
+        <th class="text-center">Price</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+      <tr>
+        <td class="text-center">
+          <img src="https://warrenty-backend.herokuapp.com/image/{{item.image}}" alt="..." id="product-img" width="100px"
+            height="100px" />
+        </td>
+        <td class="text-center">{{item.name}}</td>
+        <td class="text-center">{{quantity}}</td>
+        <td class="text-center">{{price}}</td>
+        <td class="text-center">
+          <a href="/cart/remove/{{item._id}}&1" style="text-decoration: none; color:inherit;"><i
+              class="bi bi-dash"></i></a>
+        </td>
+        <td class="text-center">
+          <a href="/cart/remove/{{item._id}}&{{quantity}}" style="text-decoration: none; color:inherit;">
+            <i class="bi bi-trash"></i>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+      <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: center;">{{quantity}}</td>
+        <td style="text-align: center;"><b>{{total}}</b></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="/cart/order" style="text-decoration: none;color:inherit;"><button class="btn angled-gradient-button btn-primary btn-block">Proceed</button></a>
+  {{else}}
+  <h1 style="text-align: center; color: black">No items in cart</h1>
+  {{/if}}
+</section>

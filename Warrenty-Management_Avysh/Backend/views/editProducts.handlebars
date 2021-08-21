@@ -1,0 +1,51 @@
+<h1 style="text-align: center; color: black" class="mt-4">Products</h1>
+<div class="jumbotron">
+
+    <form name="produUpdate" action="/product/{{result._id}}/update" method="post" role="form"
+        enctype="multipart/form-data">
+        <div class="form-floating mb-3 mt-4">
+            <div class="form-group">
+                <label for="image">Product Image *</label>
+                <input type="file" class="form-control-file" id="image" name="file">
+            </div>
+            {{!-- <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image" name="image">
+                <label class="custom-file-label" for="image">Product Image *</label>
+            </div> --}}
+        </div>
+
+        <div class="form-floating mb-3 mt-4">
+            <input type="text" class="form-control" value="{{result.name}}" id="name" name="name"
+                placeholder="Product Name" required />
+            <label for="name">Product Name *</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-4">
+            <input type="number" class="form-control" id="price" value="{{result.price}}" name="price"
+                placeholder="Product Price" required />
+            <label for="price">Product Price *</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-4">
+            <input type="text" class="form-control" id="category" name="category" value="{{result.category}}"
+                placeholder="Product Category" required />
+            <label for="category">Product Category *</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-4">
+            <input type="number" class="form-control" id="quantity" name="quantity" value="{{result.quantity}}"
+                placeholder="Product Quantity" required />
+            <label for="quantity">Product Quantity *</label>
+        </div>
+
+        <div class="mb-3 mt-4 form-group">
+            <label for="description">Product Description *</label>
+            <textarea rows="5" id="description" class="form-control" name="description"
+                placeholder="Product Description" required style="resize: none;">{{result.description}}</textarea>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-secondary angled-gradient-button">Update</button>
+        </div>
+    </form>
+</div>

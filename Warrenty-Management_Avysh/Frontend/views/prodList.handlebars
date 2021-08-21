@@ -1,0 +1,96 @@
+<style>
+    body {
+        background: #E0E0E0
+    }
+
+    .details {
+        background-color: white;
+        color: red;
+        width: 100%;
+        height: auto;
+    }
+
+    .cart {
+        color: green;
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 900;
+        width: 100%;
+        height: 39px;
+        padding-top: 9px;
+    }
+
+    .card {
+        width: fit-content
+    }
+
+    .card-body {
+        width: fit-content
+    }
+
+    .btn {
+        border-radius: 0
+    }
+    .cart:hover{
+        background-color: white;
+        color: white;
+    }
+    .details:hover{
+        background-color: black;
+        color: white;
+    }
+    .img-thumbnail {
+        border: none
+    }
+
+    .card {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+        border-radius: 5px;
+        padding-bottom: 10px
+    }
+</style>
+
+{{!-- <div class='container-fluid'>
+    {{#each products}}
+    <div class="card mx-auto col-md-3 col-10 mt-5"> {{#with image}}
+        <td> <img src="data:image/jpeg;base64,{{this.data}}" id="product-img" width="100px" height="100px" alt="...">
+        </td>
+        {{/with}}
+        <div class="card-body text-center mx-auto">
+            <div class='cvp'>
+                <h5 class="card-title font-weight-bold">{{this.name}}</h5>
+                <p class="card-text">RS.{{this.price}}</p> <a href="/item/{{this._id}}"
+                    class="btn details px-auto">DETAILS</a><br />
+                <a href="/cart/{{this._id}}&1" class="btn cart px-auto">ADD TO CART</a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div> --}}
+
+<div class="container">
+    <div class="row ">
+        {{#each products}}
+        <div class="col-lg-4 col-md-12 my-3">
+
+            <div class="card mx-auto" style="width: 15rem;" onclick="/item/{{this._id}}">
+                <img src="https://warrenty-backend.herokuapp.com/image/{{image}}" class="card-img-top" alt="..." id="product-img"
+                    width="300px" height="200px" />
+                {{!-- <img class="card-img-top" alt="..." width="300px" height="200px" /> --}}
+                <div class="card-body text-center mx-auto">
+
+                    <h5 class="card-title font-weight-bold">{{this.name}}</h5>
+                    <p class="card-text">Rs. {{this.price}}</p>
+                    <a href="/item/{{this._id}}" style="text-decoration: none; color: inherit;"><button class="btn details angled-gradient-button px-auto">Details</button></a>
+                    {{#ifeq this.quantity 0}}
+                    <a href="javascript:void(0)" style="text-decoration: none;color:inherit;pointer-events: none;"><button style="color: black;" class="btn cart angled-gradient-button px-auto" disabled>OUT OF STOCK</button></a>
+                    {{else}}
+                    <a href="/cart/{{this._id}}&1" style="text-decoration: none;color:inherit;"><button class="btn cart angled-gradient-button px-auto">ADD TO CART</button></a>
+                    {{/ifeq}}
+                </div>
+            </div>
+
+        </div>
+        {{/each}}
+    </div>
+</div>
