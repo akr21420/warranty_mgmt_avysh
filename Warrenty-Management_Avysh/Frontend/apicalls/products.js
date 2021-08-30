@@ -1,5 +1,5 @@
 const axios = require("axios");
-const API = "https://warrenty-backend.herokuapp.com";
+const API = "http://localhost:3000";
 
 const getProduct = (prodId) => {
     return axios
